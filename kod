@@ -1,0 +1,65 @@
+#include <iostream>
+
+using namespace std;
+
+const int n=10;
+int tablica[n]={2,3,1,7,9,6,4,8,5,0};
+
+void wprow(int n, int t[])
+{
+    for(int i = 0; i<n; i++)
+        cin >> t[i];
+}
+
+void wypisz(int n, int t[])
+{
+    for(int i = 0; i<n; i++)
+        cout << " "<<t[i];
+}
+
+
+
+void bubblesort(int n,int tablica[])
+{
+    int przechow;
+    for(int i = 0; i<n-1; i++)
+    {
+        for(int j = 0; j<n-1-i; j++)
+        {
+            if(tablica[j]>tablica[j+1])
+                {
+                    przechow=tablica[j];
+                    tablica[j]=tablica[j+1];
+                    tablica[j+1]=przechow;
+                }
+        }
+    }
+}
+
+void wybor(int n, int tab[])
+{
+    int przechow, index=0;
+
+    for(int i = 0; i<n-1  ;i++)
+    {
+        index=i;
+        for(int j = i+1; j<n ; j++)
+            if(tab[index]>tab[j])
+            {
+            index=j;
+            }
+        przechow=tab[i];
+        tab[i]=tab[index];
+        tab[index]=przechow;
+    }
+}
+
+int main()
+{
+    wprow(n,tablica);
+    wypisz(n,tablica);
+    wybor(n, tablica);
+    cout << "\n Pososrtowany \n" ;
+    wypisz(n,tablica);
+    return 0;
+}
