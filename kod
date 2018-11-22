@@ -5,6 +5,12 @@ using namespace std;
 const int n=10;
 int tablica[n]={2,3,1,7,9,6,4,8,5,0};
 
+const int m = 3;
+
+int tab1[n] = {1,2,3,4,5,6,7};
+int tab2[m] = {6,7,8};
+int tab[n+m];
+
 void wprow(int n, int t[])
 {
     for(int i = 0; i<n; i++)
@@ -72,6 +78,39 @@ void wstawianie1(int n, int tab[])
     }
 }
 
+void scalanie(int tab[], int tab1[], int tab2[])
+{
+    int i1 = 0, i2 = 0;
+
+    for(int j = 0; j < n+m; j++)
+    {
+        if(i1<n && i2<m)
+        {
+            if(tab1[i1]<tab2[i2])
+            {
+                tab1[j]=tab1[i1];
+                i1++;
+            }
+            else
+            {
+                tab[j]=tab2[i2]; i2++;
+            }
+
+        }
+        else if(i1>=n)
+        {
+            tab1[j]=tab2[i2];
+            i2++;
+        }
+        else
+        {
+            tab1[j]=tab1[i1];
+            i1++;
+        }
+
+    }
+
+}
 
 int main()
 {
