@@ -146,6 +146,51 @@ void scal2(int tab[10],int s)
         }
 
 }
+void scal3(int tab[n], int p, int k, int s)
+{
+    int pom[n];
+    for(int i = 0; i < 10  ;i++)
+        pom[i]=tab[i];
+    int i1 = p, i2 = s;
+    for(int j = 0; j<k; j++)
+        if(i1<s && i2<k)
+        {
+            if(pom[i1]>pom[i2])
+            {
+                tab[j]=pom[i2];
+                i2++;
+            }
+            else
+            {
+                tab[j]=pom[i1]; i1++;
+            }
+
+        }
+        else if(i1>=s-1)
+        {
+            tab[j]=pom[i2];
+            i2++;
+        }
+        else
+        {
+            tab[j]=pom[i1];
+            i1++;
+        }
+
+        for(int i=k;i<n;i++) tab[i]=pom[i];
+}
+
+void sortscal(int tab[],int p,int k)
+{
+    if(k-p>1)
+    {
+        int s =(k-p)/2;
+        sortscal(tab,p,s);
+        sortscal(tab,s+1,k);
+        scal3(tab,p,s,k);
+    }
+}
+
 
 int main()
 {
