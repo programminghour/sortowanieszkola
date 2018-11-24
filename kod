@@ -50,15 +50,18 @@ void wybor(int n, int tab[])
 
     for(int i = 0; i<n-1  ;i++)
     {
-        index=i;
+
         for(int j = i+1; j<n ; j++)
-            if(tab[index]>tab[j])
+        {
+            if(tab[i]>tab[j])
             {
-            index=j;
+                index=j;
+
+                przechow=tab[i];
+                tab[i]=tab[index];
+                tab[index]=przechow;
             }
-        przechow=tab[i];
-        tab[i]=tab[index];
-        tab[index]=przechow;
+        }
     }
 }
 
@@ -74,7 +77,7 @@ void wstawianie1(int n, int tab[])
 
 
            }
-            cout<<j<<endl;
+            
         tab[j+1]=x;
 
     }
