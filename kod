@@ -155,17 +155,17 @@ void scal3(int tab[n], int p, int k, int s)
     for(int i = 0; i < n  ;i++)
         pom[i]=tab[i];
     int i1 = p, i2 = s+1;
-    for(int j = 0; j<=k; j++)
+    for(int j = p; j<=k; j++)
         if(i1<=s && i2<=k)
         {
-            if(pom[i1]>pom[i2])
+            if(pom[i1]<pom[i2])
             {
-                tab[j]=pom[i2];
-                i2++;
+                tab[j]=pom[i1];
+                i1++;
             }
             else
             {
-                tab[j]=pom[i1]; i1++;
+                tab[j]=pom[i2]; i2++;
             }
 
         }
@@ -183,20 +183,14 @@ void scal3(int tab[n], int p, int k, int s)
        // for(int i=k;i<n;i++) tab[i]=pom[i];
 }
 
-
 void sortscal(int tab[],int p,int k)
 {
     //if(k-p>=1 && p<k)
     if (p<k)
     {
         int s =(k+p)/2;
-        cout<<"s="<<s<<"  p="<<p<<"  k="<<k<<endl;
-wypisz(10,tab);
-cout<<endl;
         sortscal(tab,p,s);
         sortscal(tab,s+1,k);
-wypisz(10,tab);
-cout<<endl;
         scal3(tab,p,k,s);
     }
 }
